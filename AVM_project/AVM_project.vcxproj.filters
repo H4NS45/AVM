@@ -9,10 +9,45 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="imgProcessing">
+      <UniqueIdentifier>{0e8031fa-c51b-47e0-9c1c-ebd5bc4b3d8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="modelling_and_display">
+      <UniqueIdentifier>{12408ee5-cb37-4f4c-b059-7757602cdc86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgProcessing\Camera">
+      <UniqueIdentifier>{22b9aca7-fd18-4fcb-aa7a-017a8f046416}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgProcessing\Camera\ConcreteCamera">
+      <UniqueIdentifier>{2dc4faf4-f797-45c9-8d67-2b34c24befc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="mapConstructor.cpp">
+      <Filter>imgProcessing</Filter>
+    </ClCompile>
+    <ClCompile Include="IVehicleCamera.cpp">
+      <Filter>imgProcessing\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="fisheyeCamera.cpp">
+      <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mapConstructor.h">
+      <Filter>imgProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="imgInfo.h">
+      <Filter>imgProcessing</Filter>
+    </ClInclude>
+    <ClInclude Include="IVehicleCamera.h">
+      <Filter>imgProcessing\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="fisheyeCamera.h">
+      <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

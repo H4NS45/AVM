@@ -19,7 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fisheyeCamera.cpp" />
+    <ClCompile Include="IVehicleCamera.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mapConstructor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="fisheyeCamera.h" />
+    <ClInclude Include="imgInfo.h" />
+    <ClInclude Include="IVehicleCamera.h" />
+    <ClInclude Include="mapConstructor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
