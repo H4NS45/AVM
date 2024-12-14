@@ -16,7 +16,7 @@ namespace avm
 			BOT_RIGHT
 		};
 
-	private:
+	protected:
 		camType m_camType;
 		camPosition m_camPos;
 		extrinsicParams m_exParams;
@@ -45,7 +45,7 @@ namespace avm
 		int getCameraPositionType();
 		extrinsicParams getExParams();
 
-		void inputSourceImg(cv::Mat img);
+		bool inputSourceImg(cv::Mat img);
 		bool inputSourceImg(const char* filename);
 
 		virtual bool dedistortSrc() = 0;

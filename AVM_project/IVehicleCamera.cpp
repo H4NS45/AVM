@@ -66,9 +66,10 @@ bool IVehicleCamera::setExparams(const int type, const std::vector<double>& tose
 	return true;
 }
 
-void IVehicleCamera::inputSourceImg(cv::Mat img)
+bool IVehicleCamera::inputSourceImg(cv::Mat img)
 {
 	m_srcImg = img;
+	return true;
 }
 
 bool IVehicleCamera::inputSourceImg(const char* filename)
