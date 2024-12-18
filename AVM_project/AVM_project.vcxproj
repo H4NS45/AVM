@@ -23,12 +23,15 @@
     <ClCompile Include="IVehicleCamera.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mapConstructor.cpp" />
+    <ClCompile Include="quartic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fisheyeCamera.h" />
     <ClInclude Include="imgInfo.h" />
     <ClInclude Include="IVehicleCamera.h" />
     <ClInclude Include="mapConstructor.h" />
+    <ClInclude Include="quartic.h" />
+    <ClInclude Include="test.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -84,6 +87,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)Dependencies/eigen3;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -100,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Dependencies/OpenGL/glew-2.1.0-win32/glew-2.1.0/include;$(SolutionDir)/Dependencies/OpenGL/glfw-3.4.bin.WIN64/glfw-3.4.bin.WIN64/include;$(SolutionDir)/Dependencies/opencv/build/include;$(SolutionDir)/Dependencies/jsoncpp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies/OpenGL/glew-2.1.0-win32/glew-2.1.0/include;$(SolutionDir)Dependencies/OpenGL/glfw-3.4.bin.WIN64/glfw-3.4.bin.WIN64/include;$(SolutionDir)Dependencies/opencv/build/include;$(SolutionDir)Dependencies/jsoncpp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,13 +138,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)/Dependencies/OpenGL/glew-2.1.0-win32/glew-2.1.0/include;$(SolutionDir)/Dependencies/OpenGL/glfw-3.4.bin.WIN64/glfw-3.4.bin.WIN64/include;$(SolutionDir)/Dependencies/opencv/build/include;$(SolutionDir)/Dependencies/jsoncpp/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies/OpenGL/glew-2.1.0-win32/glew-2.1.0/include;$(SolutionDir)Dependencies/OpenGL/glfw-3.4.bin.WIN64/glfw-3.4.bin.WIN64/include;$(SolutionDir)Dependencies/opencv/include;$(SolutionDir)Dependencies/jsoncpp/include;$(SolutionDir)Dependencies/gsl/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/Dependencies/OpenGL/glew-2.1.0-win32/glew-2.1.0/lib/Release/x64;$(SolutionDir)/Dependencies/OpenGL/glfw-3.4.bin.WIN64/glfw-3.4.bin.WIN64/lib-vc2019;$(SolutionDir)/Dependencies/opencv/build/x64/vc16/lib;$(SolutionDir)/Dependencies/jsoncpp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;opencv_world4100d.lib;jsoncpp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies/OpenGL/glew-2.1.0-win32/glew-2.1.0/lib/Release/x64;$(SolutionDir)Dependencies/OpenGL/glfw-3.4.bin.WIN64/glfw-3.4.bin.WIN64/lib-vc2019;$(SolutionDir)Dependencies/opencv/lib;$(SolutionDir)Dependencies/jsoncpp/lib;$(SolutionDir)Dependencies/gsl/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;user32.lib;gdi32.lib;shell32.lib;opencv_world4100d.lib;jsoncpp.lib;gslcblas.lib;gsl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

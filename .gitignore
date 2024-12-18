@@ -2,3 +2,4 @@ res/
 Dependencies/
 .vs
 x64
+AVM_project/*.dll

@@ -35,6 +35,9 @@
     <ClCompile Include="fisheyeCamera.cpp">
       <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
     </ClCompile>
+    <ClCompile Include="quartic.cpp">
+      <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mapConstructor.h">
@@ -47,6 +50,10 @@
       <Filter>imgProcessing\Camera</Filter>
     </ClInclude>
     <ClInclude Include="fisheyeCamera.h">
+      <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
+    </ClInclude>
+    <ClInclude Include="test.h" />
+    <ClInclude Include="quartic.h">
       <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
     </ClInclude>
   </ItemGroup>
