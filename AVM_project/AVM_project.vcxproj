@@ -29,6 +29,7 @@
     <ClInclude Include="fisheyeCamera.h" />
     <ClInclude Include="imgInfo.h" />
     <ClInclude Include="IVehicleCamera.h" />
+    <ClInclude Include="log.h" />
     <ClInclude Include="mapConstructor.h" />
     <ClInclude Include="quartic.h" />
     <ClInclude Include="test.h" />

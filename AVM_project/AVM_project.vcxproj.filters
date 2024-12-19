@@ -56,5 +56,8 @@
     <ClInclude Include="quartic.h">
       <Filter>imgProcessing\Camera\ConcreteCamera</Filter>
     </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

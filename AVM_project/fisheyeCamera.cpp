@@ -11,7 +11,7 @@ cv::Vec3b fisheyeCamera::biInterpolateFromSrc(float u, float v)
 	if (m_srcImg.empty())
 	{
 		std::cerr << "source image cannot be empty." << std::endl;
-		assert(!m_srcImg.empty());
+		__debugbreak();
 	}
 
 	cv::Point2i p1, p2, p3, p4;
@@ -21,12 +21,18 @@ cv::Vec3b fisheyeCamera::biInterpolateFromSrc(float u, float v)
 	if (u<0 || u>width - 1 || v<0 || v>height - 1)
 	{
 		std::cerr << "Invalid (u,v)" << std::endl;
-		assert(0);
+		__debugbreak();
+	}
+
+	if (ceil(u) == floor(u) || ceil(v) == floor(v))
+	{
+		std::cout << "singular point:" << u << "," << v << std::endl;
+		return cv::Vec3b(uchar(255), 0, 0);
 	}
 
 	p1 = cv::Point2i(floor(u), floor(v));
-	p2 = cv::Point2i(ceil(u), floor(v));
-	p3 = cv::Point2i(floor(u), ceil(v));
+	p2 = cv::Point2i(floor(u), ceil(v));
+	p3 = cv::Point2i(ceil(u), floor(v));
 	p4 = cv::Point2i(ceil(u), ceil(v));
 
 	I11 = m_srcImg.at<cv::Vec3b>(p1.y, p1.x);
@@ -35,24 +41,24 @@ cv::Vec3b fisheyeCamera::biInterpolateFromSrc(float u, float v)
 	I22 = m_srcImg.at<cv::Vec3b>(p4.y, p4.x);
 
 	// 计算在x方向上的插值
-	float param1 = (p2.x - u) / (p2.x - p1.x), param2 = (u - p1.x) / (p2.x - p1.x),
-		param3 = (p4.x - u) / (p4.x - p3.x), param4 = (u - p3.x) / (p4.x - p3.x),
+	float param1 = (p4.x - u) / (p4.x - p1.x), param2 = (u - p1.x) / (p4.x - p1.x),
+		param3 = (p4.x - u) / (p4.x - p1.x), param4 = (u - p1.x) / (p4.x - p1.x),
 		param5 = (p4.y - v) / (p4.y - p1.y), param6 = (v - p1.y) / (p4.y - p1.y);
-	float f1 = param1 * I11[0] + param2 * I12[0];
-	float f2 = param1 * I11[1] + param2 * I12[1];
-	float f3 = param1 * I11[2] + param2 * I12[2];
+	float f1 = param1 * I11[0] + param2 * I21[0];
+	float f2 = param1 * I11[1] + param2 * I21[1];
+	float f3 = param1 * I11[2] + param2 * I21[2];
 	//float fa = param1 * I11[3] + param2 * I12[3];
 
-	float f4 = param3 * I21[0] + param4 * I22[0];
-	float f5 = param3 * I21[1] + param4 * I22[1];
-	float f6 = param3 * I21[2] + param4 * I22[2];
+	float f4 = param3 * I12[0] + param4 * I22[0];
+	float f5 = param3 * I12[1] + param4 * I22[1];
+	float f6 = param3 * I12[2] + param4 * I22[2];
 	//float faa = param3 * I21[3] + param4 * I22[3];
 
 	// 然后在y方向上的插值
-	float b = param5 * f1 + param5 * f4;
-	float g = param5 * f2 + param5 * f5;
-	float r = param5 * f3 + param5 * f6;
-	//float a = param5 * fa + param5 * faa;
+	float b = param5 * f1 + param6 * f4;
+	float g = param5 * f2 + param6 * f5;
+	float r = param5 * f3 + param6 * f6;
+	//float a = param5 * fa + param6 * faa;
 
 	return cv::Vec3b(b, g, r);
 }
@@ -176,6 +182,11 @@ bool fisheyeCamera::dedistortSrc()
 			cv::Vec3b color = biInterpolateFromSrc(u_src, v_src);
 			m_undistortedImg.at<cv::Vec3b>(v, u) = color;
 
+#if 0
+			char buffer[100];
+			sprintf_s(buffer, "uv = (%d, %d), uv_src = (%f, %f), color = (%d, %d, %d)", u, v, u_src, v_src, int(color[0]), int(color[1]), int(color[2]));
+			AVM_LOG(buffer);
+#endif
 		}
 	}
 
